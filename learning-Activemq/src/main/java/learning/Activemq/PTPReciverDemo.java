@@ -18,7 +18,8 @@ public class PTPReciverDemo {
 	public static void main(String[] args) throws JMSException, InterruptedException {
 	    
 	    System.out.println(" Git 测试 的 第二版本");
-		
+	    System.out.println(" Git 测试 的 第3版本");
+
 		ConnectionFactory connectionFactory = new ActiveMQConnectionFactory(
 				"tcp://localhost:61616");
 		
