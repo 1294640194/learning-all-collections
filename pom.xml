@@ -7,6 +7,8 @@
   <artifactId>learning-all-collections</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
+
+	<!-- Git 的版本测试-->
   
   <name>learning-all-collections</name>
   <description>
