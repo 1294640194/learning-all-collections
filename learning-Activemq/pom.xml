@@ -1,0 +1,43 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>my.learning.daily</groupId>
+    <artifactId>learning-all-collections</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <artifactId>learning-Activemq</artifactId>
+  <name>learning-Activemq</name>
+  
+  <properties>
+  	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>  
+  </properties>
+  
+  <dependencies>
+  	<dependency>
+  		<groupId>junit</groupId>
+  		<artifactId>junit</artifactId>
+  		<version>3.8.1</version>
+  		<scope>test</scope>
+  	</dependency>	
+  		
+  		
+ 	<!-- 配置activemq 依赖的版本管理-->
+	<!-- 
+		<dependency>
+		    <groupId>org.apache.activemq</groupId>
+		    <artifactId>activemq-all</artifactId>
+		    <version>5.14.5</version>
+		</dependency> 
+	-->
+ 	<dependency>
+		    <groupId>org.apache.activemq</groupId>
+		    <artifactId>activemq-all</artifactId>
+		    <!-- 真正引入有效依赖 ，版本是父工程里管理制定的那个 -->			    
+	</dependency>
+  	
+  	
+  </dependencies>
+  
+  
+  
+</project>

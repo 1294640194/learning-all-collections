@@ -1,0 +1,120 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+			xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+			xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+			
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>my.learning.daily</groupId>
+  <artifactId>learning-all-collections</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  
+  <name>learning-all-collections</name>
+  <description>
+  
+  		本聚合父工程，是一个顶层聚合父工程，主要是作用：为各种将要依赖用到的jar包，进行jar版本约束管理
+  		
+  		是一个父工程      --父工程：对外可以被依赖）；
+  		同时也是一个聚合工程       --聚合工程： 对应 模块子工程；
+  						要想成为该聚合工程的模块子工程，
+				
+						【Eclipse上的操作步骤：】
+						
+							注意：创建子工程前，现在父工程里添加了下面的编译器插件再创建，否则创建出来的子工程默认使用1.5jdk的编译，
+								那这时候就要自己在子工程里手动添加该编译插件后，选中子工程【右键】 ->【Maven】 -> 【Update Project】
+								更新它的依赖、插件	，是依赖、插件生效，随之编译的指定使用jdk版本才生效
+														
+							① 必须在选中该聚合工程上：右键 -> maven -> New Maven Module Project
+											或：空白处  右键  -> New -> Other... -> 输入maven -> 选中 Maven Module
+												
+							② 在弹出的【New Maven Module】 窗口中 的 ： Select the module name and parent 操作页上：     
+											a、【勾选】Create a simple project (...
+											b、在   Module Name: 中填写本子模块工程的模块名
+											c、在   Parent Project: 中必须选中该聚合工程，如果选择了其他的话，那本子模块工程就不属于该聚合工程的了
+											d、点击 【Next】进入下一个页面：Configure project 操作页
+											
+							③  在弹出的【New Maven Module】 窗口中 的 ：Configure project 操作页上：
+											a、填写 Group Id:
+											b、填写Version:
+											c、填写Packaging: war（web层，页面层、controller层的子模块工程）
+															jar （业务层、持久层）
+															pom（如果子模块工程还是一个pom的打包策略工程，
+																	则说明本子模块工程既是该对应聚合父工程的子模块工程，也是另外某些模块工程的聚合工程，
+																	形成的工程结构是：
+																	
+																		顶层pom聚合父1工程          《- 子1层war模块子工程
+																						《- 子1层war模块子工程
+																						《- 子1层jar模块子工程
+																						《- 子1层jar模块子工程
+																							  。。。
+																						《- 子1层pom聚合父2工程  	《- 子2层jar模块子工程 
+																											《- 子2层jar模块子工程 
+																											
+						
+						【IDEA 上的操作步骤：】 
+								。。。
+								。。。。
+								
+  </description>
+  
+  <modules>
+  	<module>learning-Activemq</module>
+  </modules>
+  
+  
+  <properties>
+  	<activemq-all.version>5.14.5</activemq-all.version>
+  
+  </properties>
+  
+  <!-- 
+  	下面只是进行将来子工程可能用到的依赖的依赖版本集中化管理，避免本聚合父工程下面的各子工程，在需要同一个依赖时，各自引入了不同版本，容易导致版本冲突。
+  	
+  		注意：这里只是依赖的版本统一管理，并没有真正把这些依赖引入进来，将来各子工程需要什么依赖，各子还是要在自己的pom.xml 添加对应的 dependencies - dependency 来引入的，
+  			只是不需要各子工程自己指定对应版本而已。
+   -->
+  <dependencyManagement>
+  	<dependencies>
+  		
+  		<!-- 配置activemq 依赖的版本管理-->
+		<dependency>
+		    <groupId>org.apache.activemq</groupId>
+		    <artifactId>activemq-all</artifactId>
+		    <version>${activemq-all.version}</version>
+		</dependency>
+  		
+  	
+  	</dependencies>
+  </dependencyManagement>
+  
+  
+  <!-- 项目构建部分 -->
+	<build>
+		<finalName>${project.artifactId}</finalName>
+		<!-- 插件配置 -->
+		<plugins>
+		
+			<!-- 资源文件拷贝插件 -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>2.7</version>
+				<configuration>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
+			
+			<!-- java编译插件    注意：如果没有在聚合父工程里先指定了编译器jdk版本， 难么直接创建本聚合父工程的子工程时，子工程的jdk版本默认是1.5的，不是1.7 ，因此 创建子工程时，现在父工程里添加编译器插件，指定其下子工程的编译版本-->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.3</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
+			
+		</plugins>
+		</build>
+</project>
