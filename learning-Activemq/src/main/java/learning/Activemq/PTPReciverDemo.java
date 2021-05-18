@@ -20,6 +20,7 @@ public class PTPReciverDemo {
 	    System.out.println(" Git 测试 的 第二版本");
 	    System.out.println(" Git 测试 的 第3版本");
 	    System.out.println(" Git 分支合并测试，来自 hot-fix 分支");
+	    System.out.println(" Master 分支的冲突数据准备 ！！！ ");
 
 		ConnectionFactory connectionFactory = new ActiveMQConnectionFactory(
 				"tcp://localhost:61616");
