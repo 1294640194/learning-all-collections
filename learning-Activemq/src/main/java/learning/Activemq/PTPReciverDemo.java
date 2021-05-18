@@ -22,6 +22,7 @@ public class PTPReciverDemo {
 	    System.out.println(" Git 分支合并测试，来自 hot-fix 分支");
 	    System.out.println(" Master 分支的冲突数据准备 ！！！ ");
 	    System.out.println(" hot-fix 分支的冲突数据准备 ！！！");
+	    System.out.println(" push 到 GitHub 的数据准备 ！！！");
 
 		ConnectionFactory connectionFactory = new ActiveMQConnectionFactory(
 				"tcp://localhost:61616");
